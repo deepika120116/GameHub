@@ -13,9 +13,10 @@ export interface Game {
   name: string;
     background_image: string;
     parent_platforms: { platform: Platform }[];
-    metacritic: number;
+  metacritic: number;
+  sortOrder: string;
 }
-interface props{
+interface Props{
   gameQuery: GameQuery | null;
 }
 const useGames = (gameQuery:GameQuery) =>
@@ -24,7 +25,8 @@ const useGames = (gameQuery:GameQuery) =>
       params:
       {
         genres: gameQuery.genre?.id,
-        platforms: gameQuery.platform?.id
+        platforms: gameQuery.platform?.id,
+        ordering:gameQuery.sortOrder
       }
   },
     [gameQuery]);
