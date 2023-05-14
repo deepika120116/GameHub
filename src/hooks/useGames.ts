@@ -15,6 +15,7 @@ export interface Game {
     parent_platforms: { platform: Platform }[];
   metacritic: number;
   sortOrder: string;
+  searchText: String;
 }
 interface Props{
   gameQuery: GameQuery | null;
@@ -26,7 +27,8 @@ const useGames = (gameQuery:GameQuery) =>
       {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
-        ordering:gameQuery.sortOrder
+        ordering: gameQuery.sortOrder,
+        search:gameQuery.searchText
       }
   },
     [gameQuery]);
