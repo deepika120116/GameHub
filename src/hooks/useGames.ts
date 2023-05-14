@@ -16,6 +16,7 @@ export interface Game {
   metacritic: number;
   sortOrder: string;
   searchText: String;
+  rating_top: number;
 }
 interface Props{
   gameQuery: GameQuery | null;
