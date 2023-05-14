@@ -17,8 +17,8 @@ const GenreList = ({selectedGenre,onSelectGenre}:Props) => {
           {genres.map(genre => <ListItem key={genre.id} paddingY='5px'>
               <HStack>
                   <Image paddingX='5px' borderRadius={8} boxSize='32px' objectFit="cover" src= {getCroppedImageUrl(genre.image_background)}/>
-                 
-                  <Button whiteSpace="normal" textAlign="left" fontWeight={ genre.id===selectedGenre?.id?'bold':'normal'} onClick={()=>onSelectGenre(genre) } variant="link" fontSize='lg'>
+                  <Button whiteSpace="normal" textAlign="left" fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+                      onClick={() => onSelectGenre(genre)} variant="link" fontSize='lg'>
                       {genre.name}
                   </Button>
               </HStack>
