@@ -2,19 +2,20 @@ import { HStack, List, ListItem,Text,Image, Spinner, Button, Heading } from "@ch
 import useGenres, { Genres } from "../hooks/useGenres"
 import getCroppedImageUrl from "../services/image-url";
 
+
 interface Props{
     onSelectGenre: (genre: Genres) => void;
     selectedGenre: Genres | null;
 }
 const GenreList = ({selectedGenre,onSelectGenre}:Props) => {
-    const { genres, isLoading, error } = useGenres();
+    const { data, isLoading, error } = useGenres();
     if (error) return null;
     if(isLoading) return <Spinner/>
     return (
         <>
             <Heading fontSize='2xl' marginBottom={3}>Genre</Heading>
       <List>
-          {genres.map(genre => <ListItem key={genre.id} paddingY='5px'>
+          {data.map(genre => <ListItem key={genre.id} paddingY='5px'>
               <HStack>
                   <Image paddingX='5px' borderRadius={8} boxSize='32px' objectFit="cover" src= {getCroppedImageUrl(genre.image_background)}/>
                   <Button whiteSpace="normal" textAlign="left" fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
